@@ -1,0 +1,234 @@
+/* App.css */
+:root {
+  --primary-color: #4a6bff;
+  --correct-color: #4caf50;
+  --incorrect-color: #f44336;
+  --text-color: #333;
+  --light-bg: #f5f7fa;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.loading-screen,
+.welcome-screen,
+.result-screen {
+  text-align: center;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.spinner {
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 5px solid var(--primary-color);
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.welcome-screen h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.welcome-screen p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.start-button,
+.restart-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(74, 107, 255, 0.3);
+}
+
+.start-button:hover,
+.restart-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(74, 107, 255, 0.4);
+}
+
+.quiz-container {
+  max-width: 800px;
+  width: 100%;
+  background: white;
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.question-card {
+  padding: 30px;
+}
+
+.question-text {
+  margin-bottom: 30px;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.answer-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.answer-button {
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  background: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.answer-button:hover:not(:disabled) {
+  border-color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+.answer-button:disabled {
+  cursor: not-allowed;
+}
+
+.answer-button.correct {
+  background-color: rgba(76, 175, 80, 0.1);
+  border-color: var(--correct-color);
+  color: var(--correct-color);
+}
+
+.answer-button.incorrect {
+  background-color: rgba(244, 67, 54, 0.1);
+  border-color: var(--incorrect-color);
+  color: var(--incorrect-color);
+}
+
+.next-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+.next-button:hover {
+  transform: scale(1.05);
+}
+
+.result-screen h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.result-screen h2 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.score-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 20px auto;
+  box-shadow: 0 4px 20px rgba(74, 107, 255, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .question-text {
+    font-size: 1.2rem;
+  }
+
+  .answer-button {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .quiz-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
